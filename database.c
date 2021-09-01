@@ -2209,7 +2209,7 @@ retvalue database_openpackages(const char *identifier, bool readonly, struct tab
 	if (RET_WAS_ERROR(r))
 		return r;
 
-	if (table->berkeleydb != NULL && table->sec_berkeleydb == NULL) {
+	if ((table->berkeleydb != NULL && table->sec_berkeleydb == NULL) || (table->berkeleydb == NULL && table->sec_berkeleydb == NULL)) {
 		r = table_close(table);
 		if (RET_WAS_ERROR(r)) {
 			return r;
